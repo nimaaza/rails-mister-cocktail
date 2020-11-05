@@ -9,4 +9,10 @@
   <% end %>
 </ul>
 
-<%= link_to '+ dose', new_cocktail_dose_path(@cocktail), class: 'btn btn-success' %>
+<h1>New Dose</h1>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :description %>
+  <%= f.association :ingredient %>
+  <%= f.button :submit, class: 'btn btn-success' %>
+<% end %>
