@@ -9,10 +9,30 @@
   <% end %>
 </ul>
 
-<h1>New Dose</h1>
+<hr>
+
+<ul>
+  <% @cocktail.reviews.each do |review| %>
+    <li>
+      <p><%= review.content %> - <%= review.rating %> </p>
+    </li>
+  <% end %>
+</ul>
+
+<hr>
+<h3>Add a dose</h3>
 
 <%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.input :description, input_html: {class: 'p-2'} %>
   <%= f.association :ingredient, input_html: {class: 'select2 p-2'} %>
   <%= f.button :submit, class: 'btn btn-success' %>
+<% end %>
+
+<hr>
+<h3>Add a review</h3>
+
+<%= simple_form_for [@cocktail, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
 <% end %>
