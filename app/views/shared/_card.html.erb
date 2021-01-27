@@ -1,0 +1,19 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('<%= cl_image_path cocktail.photo.key, crop: :fill if cocktail.photo.attached? %>');">
+  <%= link_to cocktail_path(cocktail) do %>
+    <span></span>
+  <% end %>
+  <h2><%= cocktail.name %></h2>
+  <div class="rating">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </div>
+  <ul>
+    <% cocktail.doses.each do |dose| %>
+      <li>
+        <%= dose.description %> of <%= dose.ingredient.name %>
+      </li>
+    <% end %>
+  </ul>
+</div>
